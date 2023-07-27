@@ -20,6 +20,14 @@
                          
                 </li>
                 
+                <li class="nav-items">
+                    <a class="nav-link {{ (Request::is('priceCardList') || Request::is('priceCardList')) ? 'active' : null }}" href="{{ route('priceCardList') }}">
+                      <i class="fas fa-users-cog"></i>   
+                       {{-- {!! trans('titles.laravelroles') !!}  --}}
+                            Pricing Card List
+                  </a>
+                         
+                </li>
                
                 
                

@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\admin\UserController;
+use App\Http\Controllers\admin\PricingController;
+
 
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +35,9 @@ Route::middleware('auth','adminauth')->group(function () {
 Route::get('/userList', [UserController::class, 'index'])->name('userList');
 Route::get('/user-delete/{id}', [UserController::class, 'delete'])->name('user.delete');
 
+
+Route::get('/priceCardList', [PricingController::class, 'index'])->name('priceCardList');
+Route::get('/price-card-delete/{id}', [PricingController::class, 'delete'])->name('pricecard.delete');
 
 Route::get('/User', function () {
     return ' welcome USer';
