@@ -37,6 +37,9 @@ Route::get('/user-delete/{id}', [UserController::class, 'delete'])->name('user.d
 
 
 Route::get('/priceCardList', [PricingController::class, 'index'])->name('priceCardList');
+Route::post('/price-card-add', [PricingController::class, 'add'])->name('pricecard.add');
+Route::get('/price-card-edit/{id}', [PricingController::class, 'edit'])->name('pricecard.edit');
+
 Route::get('/price-card-delete/{id}', [PricingController::class, 'delete'])->name('pricecard.delete');
 
 Route::get('/User', function () {

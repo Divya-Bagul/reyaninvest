@@ -19,10 +19,69 @@ class PricingController extends Controller
       
         return $dataTable->render('admin.Price.index');
     }
+    public function add(Request $req)
+    {
+       
+        try{
+
+            if($req->id != null){
+                $pricingCard =  Pricing::find($req->id);
+                $pricingCard->price_card_name = $req->pCardName;
+                $pricingCard->price_card_amount = $req->pCardAmount;
+                $pricingCard->price_card_duration = $req->pCardDuration;
+                $pricingCard->price_card_offer = $req->pCardOffer;
+                $pricingCard->price_card_detail = $req->pCardDetail1;
+                $pricingCard->update();
+        
+            }else{
+                $pricingCard =  new Pricing;
+                $pricingCard->price_card_name = $req->pCardName;
+                $pricingCard->price_card_amount = $req->pCardAmount;
+                $pricingCard->price_card_duration = $req->pCardDuration;
+                $pricingCard->price_card_offer = $req->pCardOffer;
+                $pricingCard->price_card_detail = $req->pCardDetail1;
+                $pricingCard->save();
+        
+            }
+           
+            if($pricingCard->id != null)  {
+                return ['response'=>'success'];
+            }else{
+                return ['response'=>'fail'];
+            }
+        }
+        catch(Exception $e){
+            return ['response'=>$e];
+        }
+        
+      
+    }
+    public function edit($id)
+    {
+        
+        $pricing = DB::table('pricing')->where('id',$id)->first();
+       
+        if($pricing->id != null )
+        {
+        return ['data' =>'success',
+                "price_card_name" => $pricing->price_card_name,
+                "price_card_amount"=>$pricing->price_card_amount,
+                "price_card_duration"=>$pricing->price_card_duration,
+                "price_card_offer"=>$pricing->price_card_offer,
+                "price_card_detail"=>$pricing->price_card_detail,
+                "id"=>$id,           
+            ];
+
+        }else{
+            return ['data' =>'fail'];
+        }        
+    }
+    
     public function delete($id)
     {
         
-        $users = DB::table('pricing')->where('id',$id)->delete();
+        $pricing = DB::table('pricing')->where('id',$id)->delete();
+
         return ['data' =>'success'];
         
     }
