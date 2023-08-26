@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\admin\PricingController;
+use App\Http\Controllers\PagesController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -17,10 +18,10 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PagesController::class, 'index'])->name('main');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -41,7 +42,7 @@ Route::post('/price-card-add', [PricingController::class, 'add'])->name('priceca
 Route::get('/price-card-edit/{id}', [PricingController::class, 'edit'])->name('pricecard.edit');
 
 Route::get('/price-card-delete/{id}', [PricingController::class, 'delete'])->name('pricecard.delete');
-
+Route::post('contact/create', [PricingController::class, 'contact'])->name('contact.create');
 Route::get('/User', function () {
     return ' welcome USer';
 })->name('User');

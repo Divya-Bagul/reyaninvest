@@ -43,7 +43,7 @@
                      url: $(this).attr('data-href'),
                      success: function(response) {
                          if(response.data = 'success'){
-                          $("#exampleModal").modal('show');
+                            $("#exampleModal").modal('show');
                             $('#pCardName').val(response.price_card_name);
                             $('#pCardAmount').val(response.price_card_amount);
                             $('#pCardDuration').val(response.price_card_duration);

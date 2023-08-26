@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 use Session;
 use App\Models\User;
 use App\Models\Pricing;
+use App\Models\contact;
+
 
 use Redirect,Response,DB,Config;
 use Datatables;
@@ -84,6 +86,43 @@ class PricingController extends Controller
 
         return ['data' =>'success'];
         
+    }
+
+    public function contact(Request $req)
+    {
+       
+        try{
+
+            
+                $contact =  new contact;
+                $contact->name = $req->name;
+                $contact->email = $req->email;
+                $contact->subject = $req->subject;
+                $contact->message = $req->message;
+                $contact->save();
+                $details = [
+                    'title' => 'Mail from ItSolutionStuff.com',
+                    'body' => 'This is for testing email using smtp'
+                ];
+               
+                \Mail::to('divyapbagul@gmail.com')->send(new \App\Mail\MyTestMail($details));
+               
+                
+            
+            // $pricing = Pricing::all();
+            $data = 'Thank you for contact.';
+            if($contact->id != null)  {
+                // return view('welcome',compact('data','pricing'));
+                return ['response'=>'success'];
+            }else{
+                return ['response'=>'fail'];
+            }
+        }
+        catch(Exception $e){
+            return ['response'=>$e];
+        }
+        
+      
     }
     
 }

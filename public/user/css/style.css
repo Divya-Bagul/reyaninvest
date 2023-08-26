@@ -749,7 +749,7 @@ section {
 }
 
 .about .video-box {
-  background: url("../img/about.png") center center no-repeat;
+  background: url("../user/img/hero-img.png") center center no-repeat;
   background-size: contain;
   min-height: 300px;
 }
@@ -1641,4 +1641,8 @@ section {
   #footer .footer-top .footer-info {
     margin: -20px 0 30px 0;
   }
+}
+.pricing-card:hover h3{
+  background: #1acc8d;
+  color: white;
 }

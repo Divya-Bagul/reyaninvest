@@ -45,7 +45,7 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
-        <h1><a href="index.html"><span>Bootslander</span></a></h1>
+        <h1><a href="index.html"><span>ReyanshInvest</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
@@ -97,7 +97,7 @@
 
           <div class="col-lg-4 col-md-6">
             <div class="footer-info">
-              <h3>Bootslander</h3>
+              <h3>ReyanshInvest</h3>
               <p class="pb-3"><em>Qui repudiandae et eum dolores alias sed ea. Qui suscipit veniam excepturi quod.</em></p>
               <p>
                 A108 Adam Street <br>
@@ -152,7 +152,7 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>Bootslander</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>ReyanshInvest</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->

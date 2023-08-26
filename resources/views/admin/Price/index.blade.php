@@ -80,12 +80,12 @@
    $("body").on("click", '.modalbtn', function() {
      
                
-    $('#pCardName').val(''),
-              $('#id').val(''),
-                $('#pCardAmount').val(''),
-                $('#pCardDuration').val(''),
-               $('#pCardOffer').val(''),
-                 $('#pCardDetail1').val(''),
+    $('#pCardName').val('');
+              $('#id').val('');
+                $('#pCardAmount').val('');
+                $('#pCardDuration').val('');
+               $('#pCardOffer').val('');
+                 $('#pCardDetail1').val('');
                 
           
      });
@@ -104,7 +104,7 @@
                 
           },
           success: function(response) {
-
+            $("#exampleModal").modal('hide');
               if(response.response = 'success'){
                   $('#id').val('');
                   swal("Your Pricing Card has been Created!", {

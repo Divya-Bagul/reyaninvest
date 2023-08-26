@@ -4,8 +4,8 @@
       <div class="row justify-content-between">
         <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
           <div data-aos="zoom-out">
-            <h1>Build Your Landing Page With <span>Bootstlander</span></h1>
-            <h2>We are team of talented designers making websites with Bootstrap</h2>
+            <h1>Navigating the Market with <span>Confidence </span></h1>
+            <h2>Your Guide to Financial Opportunities</h2>
             <div class="text-center text-lg-start">
               <a href="#about" class="btn-get-started scrollto">Get Started</a>
             </div>
