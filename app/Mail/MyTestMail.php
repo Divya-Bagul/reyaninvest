@@ -31,8 +31,12 @@ class MyTestMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'My Test Mail',
+            // from: new Address($this->details['from'], $this->details['name']),
+            subject: $this->details['title'],
         );
+        // return new Envelope(
+        //     subject: 'My Test Mail',
+        // );
     }
 
     /**
@@ -42,8 +46,11 @@ class MyTestMail extends Mailable
      */
     public function content()
     {
+        // return new Content(
+        //     view: 'myTestMail',
+        // );  
         return new Content(
-            view: 'myTestMail',
+            text: 'myTestMail',
         );
     }
 
@@ -56,11 +63,11 @@ class MyTestMail extends Mailable
     {
         return [];
     }
-    public function build()
-    {
-        return $this->subject('Mail from ItSolutionStuff.com')
-                    ->view('myTestMail');
-    }
+    // public function build()
+    // {
+    //     // return $this->subject('Mail from ItSolutionStuff.com')
+    //     //             ->view('myTestMail');
+    // }
 
    
 }

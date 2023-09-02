@@ -6,7 +6,7 @@ use Session;
 use App\Models\User;
 use App\Models\Pricing;
 use App\Models\contact;
-
+use App\Mail\MyTestMail;
 
 use Redirect,Response,DB,Config;
 use Datatables;
@@ -102,11 +102,13 @@ class PricingController extends Controller
                 $contact->save();
                 $details = [
                     'title' => 'Mail from ItSolutionStuff.com',
-                    'body' => 'This is for testing email using smtp'
+                    'body' => 'This is for testing email using smtp',
+                    'from'=>'divyabagul1412000@gmail.com',
+                        'name'=>'Divya',
                 ];
-               
-                \Mail::to('divyapbagul@gmail.com')->send(new \App\Mail\MyTestMail($details));
-               
+                // new MyTestMail($details)
+                \Mail::to('divyabagul1412000@gmail.com')->send(new MyTestMail($details));
+                
                 
             
             // $pricing = Pricing::all();

@@ -9,6 +9,7 @@ use Datatables;
 use App\DataTables\UsersDataTable;
 use Illuminate\Http\Request;
 
+
 use App\Models\Pricing;
 
 class PagesController extends Controller
@@ -17,7 +18,9 @@ class PagesController extends Controller
     public function index(UsersDataTable $dataTable)
     {
         $pricing = Pricing::all();
-        return view('welcome',compact('pricing'));
+        $stocklist = DB::table('stocklist')->Paginate(10);
+
+        return view('welcome',compact('pricing','stocklist'));
     }
     // public function delete($id)
     // {
