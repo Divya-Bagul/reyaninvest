@@ -126,5 +126,22 @@ class PricingController extends Controller
         
       
     }
+
+    function transaction(Request $req){
+
+        $user = User::create([
+            'name' => $req->name,
+            'email' => $req->email,
+            'number' => $req->number,
+            'password' => $req->number,
+            'payment' => $req->payment,
+            'priceplan' => $req->priceplan,
+            'planprice' => $req->planprice,
+            'planDuration'=>$req->planDuration,
+            'priceplanId'=>$req->priceplanId,
+        ]);
+        return $user;
+
+    }
     
 }

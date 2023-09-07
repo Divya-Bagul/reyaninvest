@@ -162,12 +162,12 @@
                 <div class="row" data-aos="fade-left">
                     <div class="col-lg-12 col-md-6">
                         <table class="table ">
-                          <tr>
-                            <th>Stock</td>
-                            <th>Buy Price</th>
-                            <th>Holding Price </th>
-                            <th>Return</th>
-                        </tr>
+                            <tr>
+                                <th>Stock</td>
+                                <th>Buy Price</th>
+                                <th>Holding Price </th>
+                                <th>Return</th>
+                            </tr>
                             @foreach ($stocklist as $item)
                                 <tr>
                                     <td>{{ $item->stock }}</td>
@@ -177,7 +177,7 @@
                                 </tr>
                             @endforeach
                         </table>
-                        {{ $stocklist->links('pagination::bootstrap-5'  ) }}
+                        {{ $stocklist->links('pagination::bootstrap-5') }}
                     </div>
                 </div>
         </section>
@@ -208,72 +208,126 @@
                                 </ul>
                                 <div class="btn-wrap">
 
-                                  <button type="button" class=" btn-buy  modalbtn" data-toggle="modal" data-target="#exampleModal">
-                                    Buy Now
-                                  </button>
-                                    
+                                    <button type="button" class=" btn-buy  modalbtn buynow" data-bs-toggle="modal"
+                                        
+                                        data-bs-target=".exampleModal">
+                                        
+                                        Buy Now
+                                    </button>
+
                                 </div>
                             </div>
                         </div>
-                    @endforeach
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                              <form class="container">
-                                  <div class="row">
-                                    <div class="col-6 form-group">
-                                      <label for="recipient-name" class="col-form-label">Price Card Name:</label>
-                                      <input type="text" name="pCardName" id="pCardName" class="form-control" placeholder="Price Card name">
-                                      @csrf
-                                      <input type="hidden" value="" name="id" id ="id">
-                                    </div>
-                                  
-                                    <div class="col-6 form-group">
-                                      <label for="recipient-name" class="col-form-label">Price Card Amount:</label>
-                                      <input type="number" name="pCardAmount" id="pCardAmount" class="form-control" placeholder="Price Card Amount">
-                                    </div>
-                                  </div>
-                  
-                                  <div class="row">
-                                      <div class="col-6 form-group">
-                                          <label for="recipient-name" class="col-form-label">Price Card Duration:</label>
-                                        <input type="text" class="form-control" id="pCardDuration"  name="pCardDuration" placeholder="Price Card Duration">
-                                      </div>
-                                      <div class="col-6 form-group">
-                                          <label for="recipient-name" class="col-form-label">Price Card Offer:</label>
-                                          <select class="form-control" id="pCardOffer" name="pCardOffer">
-                                              <option>Default select</option>
-                                          </select>
-                                      </div>
-                                    </div>
-                                    <div class="row">
-                                      <div class="col-6 form-group">
-                                        <label for="recipient-name" class="col-form-label">Price Card Detail:</label>
-                                        <input type="text" class="form-control" id="pCardDetail1"  name="pCardDetail1" placeholder="Price Card Detail">
-                                      </div>
-                                    </div>
-                                   
-                                </form>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary add close"   data-dismiss="modal" data-href="{{route('pricecard.add')}}">Save Card Data</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
 
+                        <div class="modal fade exampleModal" id="exampleModal" tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">
+                                        Enter Contact Details</h5>
+
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    {{-- <form class="container"> --}}
+
+                                    <div class="row">
+
+                                        <h4 class="cardName"></h4>
+                                        <h5 class="cardDuration"> </h5>
+                                        <hr>
+                                        <div class="col-12 form-group">
+                                            <label for="recipient-name" class="col-form-label">Full Name</label>
+                                            <input type="text" name="name" id="name" class="form-control"
+                                                placeholder="Full Name">
+
+                                            @csrf
+                                        </div>
+
+                                        <div class="col-12 form-group">
+                                            <label for="recipient-name" class="col-form-label">Whatsapp Number</label>
+                                            <input type="number" name="number" id="number" class="form-control"
+                                                placeholder="Whatsapp Number">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-12 form-group">
+                                            <label for="recipient-name" class="col-form-label">Email</label>
+                                            <input type="text" class="form-control" id="email" name="email"
+                                                placeholder="Email">
+                                        </div>
+
+                                    </div>
+                                    <div class="text-center">
+                                        <button class=" btn btn-success btn-upi my-4 mt-4 payUPI modalbtn"
+                                            data-bs-toggle="modal" data-bs-target="#modelupi"   
+                                            data-cduration='{{ $item->price_card_duration }}' 
+                                        data-cname='{{ $item->price_card_name }}'
+                                        data-cprice='{{ $item->price_card_amount }}'
+                                        data-priceplanId ='{{ $item->id}}'
+                                        data-href='{{ route('transaction') }}'> Pay Thorugh UPI
+                                            
+                                        
+                                        </button>
+                                    </div>
+                                    {{-- </form> --}}
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">CANCLE</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+
+                    
+
+
+                    <div class="modal fade " id="modelupi" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">>
+                        <div class="modal-dialog modal-dialog-scrollable">
+                            <div class="modal-content">
+
+                                <div class="modal-body">
+
+                                    <div class="row">
+                                        <div class="col-md-12 text-center">
+                                            <h4>Pay Using UPI</h4>
+                                            <p>Scan code using</p>
+                                            <p class="planprice"></p>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <img src="https://i0.wp.com/www.zidsworld.com/wp-content/uploads/2021/05/payment_icons.png?ssl=1"
+                                                width="450px" class="img-fluid" />
+                                        </div>
+                                        <div class="col-md-12">
+                                            <img src="https://tse3.mm.bing.net/th?id=OIP.LCFs_orjv32lVgDhEPST_gHaHa&pid=Api&P=0&h=180"
+                                                width="450px" class="img-fluid" />
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary upi-cancle"
+                                        data-bs-dismiss="modal">Close</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
 
             </div>
+
+
+            <!-- Modal -->
+
         </section><!-- End Pricing Section -->
 
 
@@ -447,8 +501,18 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+    </script>
 
     <script>
+        $("body").on("click", '.upi-cancle', function(e) {
+            e.preventDefault();
+            $('.modal-backdrop').removeClass('modal-backdrop fade show');
+        });
         $("body").on("click", '.btn-submit', function(e) {
             e.preventDefault();
             if ($('#name').val() == '') {
@@ -496,6 +560,47 @@
             });
 
         });
+
+        $("body").on("click", '.payUPI', function(e) {
+            e.preventDefault();
+
+            $('.cardName').text('');
+            $('.cardDuration').text('');
+            $('.planprice').text('');
+            var cardname = $(this).attr('data-cname');
+            var cardprice = $(this).attr('data-cprice');
+            var cardDuration = $(this).attr('data-cduration');
+            var priceplanId= $(this).attr('data-priceplanId')
+            $('.cardName').text(cardname);
+            $('.cardDuration').text(cardDuration);
+            $('.planprice').text(cardprice);
+
+
+            $.ajax({
+                type: 'post',
+                url: $(this).attr('data-href'),
+                data: {
+                    '_token': $('input[name="_token"]').val(),
+                    'name': $('#name').val(),
+                    'email': $('#email').val(),
+                    'number': $('#number').val(),
+                    'payment': 'UPI',
+                    'priceplan':cardname,
+                    'planprice':cardprice,
+                    'planDuration' :cardDuration,
+                    'priceplanId':priceplanId
+                    
+
+
+
+
+                },
+                success: function(response) {
+
+
+                }
+            });
+
+        });
     </script>
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">  
 @endsection

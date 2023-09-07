@@ -43,6 +43,8 @@ Route::get('/price-card-edit/{id}', [PricingController::class, 'edit'])->name('p
 
 Route::get('/price-card-delete/{id}', [PricingController::class, 'delete'])->name('pricecard.delete');
 Route::post('contact/create', [PricingController::class, 'contact'])->name('contact.create');
+Route::post('transaction', [PricingController::class, 'transaction'])->name('transaction');
+
 Route::get('/User', function () {
     return ' welcome USer';
 })->name('User');
